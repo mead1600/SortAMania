@@ -61,12 +61,13 @@ public class Team_11_SortCompetition {
         int i = left;
         int j = mid + 1;
         int k = left;
-        while( i <+ mid && j <= right){
+        while( i <= mid && j <= right){
             if(arr[i] < arr[j]){
                 temp[k] = arr[i];
                 i++;
             }else{
                 temp[k] = arr[j];
+                j++;
             }
             k++;
         }
@@ -75,13 +76,13 @@ public class Team_11_SortCompetition {
             i++;
             k++;
         }
-        while(j <= mid){
+        while(j <= right){
             temp[k] = arr[j];
             j++;
             k++;
         }
-        for(int a = left; a < right; a++){
-            arr[a] = temp[a];
+        for(k = left; k <= right; k++){
+            arr[k] = temp[k];
         }
     }
 
