@@ -13,6 +13,18 @@ public class Team_11_SortCompetition {
         return index;
     }
 
+    public static int Sort2DArray(int[][] val){
+        for(int i = 0; i < val.length; i++){
+            MergeSort(val[i]);
+        }
+        int[] medians = new int[val.length];
+        for(int j = 0; j < val.length; j++){
+            medians[j] = val[j][(val.length-1)/2 ];
+        }
+        MergeSort(medians);
+        return medians[(medians.length - 1)/2];
+    }
+
     public static void StringMerge(String[] arr, int left, int mid,int right, String[] temp){
         int i = left;
         int j = mid + 1;
@@ -57,7 +69,7 @@ public class Team_11_SortCompetition {
         StringMergeSortHelper(elements,0,n-1,temp);
     }
 
-    public void merge(int[] arr, int left, int mid,int right, int[] temp){
+    public static void merge(int[] arr, int left, int mid,int right, int[] temp){
         int i = left;
         int j = mid + 1;
         int k = left;
@@ -86,12 +98,37 @@ public class Team_11_SortCompetition {
         }
     }
 
+    public static void MergeSortHelper(int[] elements, int from, int to, int[] temp){
+        if(from < to){
+            int middle = (from + to) / 2;
+            MergeSortHelper(elements, from, middle, temp);
+            MergeSortHelper(elements,middle+1,to,temp);
+            merge(elements, from, middle, to, temp);
+        }
+    }
+
+    public static void MergeSort(int[] elements){
+        int n = elements.length;
+        int[] temp = new int[n];
+        MergeSortHelper(elements,0,n-1,temp);
+    }
+
     public static int[] randomArray(int num)
     {
         int[] Array = new int[num];
         for(int i = 0; i < Array.length;i++)
         {
             Array[i] = (int)(Math.random()*10);
+        }
+        return Array;
+    }
+
+    public static int[][] random2DArray(int num, int val){
+        int[][] Array = new int[num][val];
+        for(int i = 0; i < Array.length; i++){
+            for(int j = 0; j < Array[i].length; j++){
+                Array[i][j] = (int)(Math.random()*10000);
+            }
         }
         return Array;
     }
