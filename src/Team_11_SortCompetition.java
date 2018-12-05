@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Team_11_SortCompetition implements Comparable<Team_11_SortCompetition>{
+public class Team_11_SortCompetition{ //implements Comparable<Team_11_SortCompetition>{
 
     public int value;
 
@@ -23,54 +23,6 @@ public class Team_11_SortCompetition implements Comparable<Team_11_SortCompetiti
         }
         return median;
     }
-
-    public int compareTo(Team_11_SortCompetition[] other, String val){
-        String[] s = new String[other.length];
-        int position = 0;
-        for(int i = 0; i < s.length; i++){
-            s[i] = other[i].toString();
-        }
-        StringMergeSort(s);
-        System.out.println(Arrays.toString(s));
-        for(int a = 0; a < s.length; a++){
-            if(s[a].equals(val)){
-                return a;
-            }else{
-                position = -1;
-            }
-        }
-        return position;
-    }
-
-    /*public static void compareMerge(Team_11_SortCompetition[] arr, int left, int mid, int right, Team_11_SortCompetition temp){
-        int i = left;
-        int j = mid + 1;
-        int k = left;
-        while( i <= mid && j <= right){
-            if(toString(arr[i]).compareTo(arr[j]) < 0){
-                temp[k] = arr[i];
-                i++;
-            }else{
-                temp[k] = arr[j];
-                j++;
-            }
-            k++;
-        }
-        while(i <= mid){
-            temp[k] = arr[i];
-            i++;
-            k++;
-        }
-        while(j <= right){
-            temp[k] = arr[j];
-            j++;
-            k++;
-        }
-        for(k = left; k <= right; k++){
-            arr[k] = temp[k];
-        }
-    }*/
-
     public static int StringSortandSearch(String[] arr, String given){
         int index = 0;
         StringMergeSort(arr);

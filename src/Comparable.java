@@ -1,3 +1,3 @@
 public interface Comparable<T> {
-    int compareTo(T[] otherObject, String val);
+    int compareTo(T otherObject);
 }
