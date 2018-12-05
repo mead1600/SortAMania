@@ -1,4 +1,75 @@
-public class Team_11_SortCompetition {
+import java.util.Arrays;
+
+public class Team_11_SortCompetition implements Comparable<Team_11_SortCompetition>{
+
+    public int value;
+
+    public Team_11_SortCompetition(){
+        this.value = (int)(Math.random()*10000);
+    }
+
+    static int findMedian(int[] values) {
+        int median;
+        // get count of scores
+        int totalElements = values.length;
+        // check if total number of scores is even
+        if (totalElements % 2 == 0) {
+            int sumOfMiddleElements = values[totalElements / 2] + values[totalElements / 2 - 1];
+            // calculate average of middle elements
+            median = (sumOfMiddleElements) / 2;
+        } else {
+            // get the middle element
+            median = (values[values.length / 2]);
+        }
+        return median;
+    }
+
+    public int compareTo(Team_11_SortCompetition[] other, String val){
+        String[] s = new String[other.length];
+        int position = 0;
+        for(int i = 0; i < s.length; i++){
+            s[i] = other[i].toString();
+        }
+        StringMergeSort(s);
+        System.out.println(Arrays.toString(s));
+        for(int a = 0; a < s.length; a++){
+            if(s[a].equals(val)){
+                return a;
+            }else{
+                position = -1;
+            }
+        }
+        return position;
+    }
+
+    /*public static void compareMerge(Team_11_SortCompetition[] arr, int left, int mid, int right, Team_11_SortCompetition temp){
+        int i = left;
+        int j = mid + 1;
+        int k = left;
+        while( i <= mid && j <= right){
+            if(toString(arr[i]).compareTo(arr[j]) < 0){
+                temp[k] = arr[i];
+                i++;
+            }else{
+                temp[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+        while(i <= mid){
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }
+        while(j <= right){
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+        for(k = left; k <= right; k++){
+            arr[k] = temp[k];
+        }
+    }*/
 
     public static int StringSortandSearch(String[] arr, String given){
         int index = 0;
@@ -23,6 +94,14 @@ public class Team_11_SortCompetition {
         }
         MergeSort(medians);
         return medians[(medians.length - 1)/2];
+    }
+
+    public static Team_11_SortCompetition[] randomTeamArr(int num){
+        Team_11_SortCompetition[] arr = new Team_11_SortCompetition[num];
+        for(int i = 0; i < num; i++){
+            arr[i] = new Team_11_SortCompetition();
+        }
+        return arr;
     }
 
     public static void StringMerge(String[] arr, int left, int mid,int right, String[] temp){
@@ -118,7 +197,7 @@ public class Team_11_SortCompetition {
         int[] Array = new int[num];
         for(int i = 0; i < Array.length;i++)
         {
-            Array[i] = (int)(Math.random()*10);
+            Array[i] = (int)(Math.random()*10000);
         }
         return Array;
     }
