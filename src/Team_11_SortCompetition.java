@@ -48,12 +48,30 @@ public class Team_11_SortCompetition{ //implements Comparable<Team_11_SortCompet
         return medians[(medians.length - 1)/2];
     }
 
-    public static Team_11_SortCompetition[] randomTeamArr(int num){
-        Team_11_SortCompetition[] arr = new Team_11_SortCompetition[num];
-        for(int i = 0; i < num; i++){
-            arr[i] = new Team_11_SortCompetition();
+    public static int partition(Thingy arr[], int left, int right){
+        Thingy pivot = arr[right];
+        int i = left - 1;
+        for(int j = left; j < right; j++){
+            if(arr[j].compareTo(pivot) <= 0){
+                i++;
+                Thingy val = arr[j];
+                arr[j] = arr[i];
+                arr[i] = val;
+            }
         }
-        return arr;
+        Thingy val2 = arr[i+1];
+        arr[i+1] = arr[right];
+        arr[right] = val2;
+        return  i + 1;
+    }
+
+    public static void quicksort(Thingy[] arr, int left, int right){
+        if(left < right){
+            int pivot = partition(arr, left, right);
+
+            quicksort(arr, left, pivot - 1);
+            quicksort(arr, pivot + 1, right);
+        }
     }
 
     public static void StringMerge(String[] arr, int left, int mid,int right, String[] temp){

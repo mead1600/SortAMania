@@ -1,5 +1,9 @@
 public class Thingy implements Comparable<Thingy>{
 
+    public int getValue() {
+        return value;
+    }
+
     private int value;
 
     public Thingy(){
